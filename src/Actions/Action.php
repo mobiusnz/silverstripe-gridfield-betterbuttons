@@ -111,7 +111,7 @@ class Action extends LiteralField implements BetterButtonInterface
      */
     private function getButtonClasses()
     {
-        $classes = []; // $this->extraClass();
+        $classes = ''; // $this->extraClass();
         if ($this->isGrouped()) {
             return $classes; //Do not return the below additional classes
         }

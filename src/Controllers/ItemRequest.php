@@ -58,12 +58,16 @@ class ItemRequest extends GridFieldDetailForm_ItemRequest
 
         $actions = $this->filterFieldList($record->getBetterButtonsActions($this));
         $utils = $record->getBetterButtonsUtils();
+        $filtered = $this->filterFieldList($utils);
 
-        $actions->push(
-            CompositeField::create(
-                $this->filterFieldList($utils)
-            )->addExtraClass('better-buttons-utils')
-        );
+        if ($filtered->count()) {
+
+            $actions->push(
+                CompositeField::create(
+                    $filtered
+                )->addExtraClass('better-buttons-utils')
+            );
+        }
 
         return $actions;
     }
