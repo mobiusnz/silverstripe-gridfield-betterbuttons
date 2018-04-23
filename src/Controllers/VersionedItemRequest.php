@@ -69,11 +69,16 @@ class VersionedItemRequest extends VersionedGridFieldItemRequest
         );
 
         $utils = $record->getBetterButtonsUtils();
-        $actions->push(
-            CompositeField::create(
-                $this->filterFieldList($utils)
-            )->addExtraClass('better-buttons-utils')
-        );
+        $filtered = $this->filterFieldList($utils);
+
+        if ($filtered->count()) {
+            $actions->push(
+                CompositeField::create(
+                    $filtered
+                )->addExtraClass('better-buttons-utils')
+            );
+        }
+
 
         return $actions;
     }
